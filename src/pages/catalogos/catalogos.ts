@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams,ActionSheetController,AlertController,ToastController } from 'ionic-angular';
+import { NavController, NavParams,ActionSheetController,AlertController,ToastController ,Refresher} from 'ionic-angular';
 import { CrearproductosPage } from '../crearproductos/crearproductos';
 import { CatalogosProvider } from '../../providers/catalogos/catalogos';
 
@@ -91,5 +91,14 @@ export class CatalogosPage {
     });
     actionSheet.present();
 
+  }
+
+
+  public doRefresh(refresher:Refresher){
+
+    this.catalogosPro.getProductos().subscribe(datos => {
+      this.arreglo = datos;
+      refresher.complete();
+   });
   }
 }

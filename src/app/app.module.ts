@@ -13,10 +13,14 @@ import { CuentasPage } from '../pages/cuentas/cuentas';
 import { CrearproductosPage } from '../pages/crearproductos/crearproductos';
 import { DetalleCuentaPage } from '../pages/detalle-cuenta/detalle-cuenta';
 import { DetalleCuentaProductosAgregarPage } from '../pages/detalle-cuenta-productos-agregar/detalle-cuenta-productos-agregar';
+import { UsuariosPage } from '../pages/usuarios/usuarios';
+import { SucursalesPage } from '../pages/sucursales/sucursales';
+import { HistorialPage } from '../pages/historial/historial';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { CatalogosProvider } from '../providers/catalogos/catalogos';
+import { PrdverificaentrarProvider } from '../providers/prdverificaentrar/prdverificaentrar';
 
 @NgModule({
   declarations: [
@@ -28,7 +32,10 @@ import { CatalogosProvider } from '../providers/catalogos/catalogos';
     CuentasPage,
     CrearproductosPage,
     DetalleCuentaPage,
-    DetalleCuentaProductosAgregarPage
+    DetalleCuentaProductosAgregarPage,
+    UsuariosPage,
+    SucursalesPage,
+    HistorialPage
   ],
   imports: [
     BrowserModule,
@@ -45,13 +52,17 @@ import { CatalogosProvider } from '../providers/catalogos/catalogos';
     CuentasPage,
     CrearproductosPage,
     DetalleCuentaPage,
-    DetalleCuentaProductosAgregarPage
+    DetalleCuentaProductosAgregarPage,
+    UsuariosPage,
+    SucursalesPage,
+    HistorialPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    CatalogosProvider
+    CatalogosProvider,
+    PrdverificaentrarProvider
     
   ]
 })

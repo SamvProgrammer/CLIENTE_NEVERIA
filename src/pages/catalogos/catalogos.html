@@ -5,15 +5,30 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar color="primario">
-    <ion-title>catalogos</ion-title>
-  </ion-navbar>
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-buttons end>
+        <button  ion-button icon-end>
+            Salir
+          
+        </button>
+      </ion-buttons>
 
+    <ion-title>
+      Cátalogos
+    </ion-title>
+   
+  </ion-navbar>
 </ion-header>
 
 
 <ion-content class="fondo">
+    <ion-refresher class = "fondo" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+      </ion-refresher>
+
   <ion-list class="fondo">
     <ion-list-header color="light">
         <strong>Productos</strong>

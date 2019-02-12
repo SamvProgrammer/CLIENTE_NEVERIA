@@ -9,7 +9,7 @@ import { CatalogosPage } from '../catalogos/catalogos';
 })
 export class TabsPage {
 
-  tab1Root = CatalogosPage;
+  
   tab2Root = CuentasPage;
   tab3Root = TransaccionesPage;
 

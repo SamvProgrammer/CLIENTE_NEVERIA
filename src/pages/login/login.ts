@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {  NavController, NavParams,AlertController } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
+import { PrdverificaentrarProvider } from '../../providers/prdverificaentrar/prdverificaentrar';
 
 
 /**
@@ -19,12 +20,14 @@ export class LoginPage {
   public usuario:any ="";
   public pass:any="";
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,private alert:AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private alert:AlertController,
+  private p:PrdverificaentrarProvider) {
   }
 
   public login(){
     if(this.usuario == "administrador" && this.pass == "12345"){
-      this.navCtrl.setRoot(TabsPage);
+       this.p.setEntrar(true);
+       this.p.setActivaMenu(true);
     }else{
 
        const aux = this.alert.create({
