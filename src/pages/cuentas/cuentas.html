@@ -10,26 +10,46 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-buttons end>
-        <button  ion-button icon-end>
-            Salir
-          
-        </button>
-      </ion-buttons>
+      <button ion-button icon-end>
+        Salir
+
+      </button>
+    </ion-buttons>
 
     <ion-title>
       Cuentas
     </ion-title>
-   
+
   </ion-navbar>
 </ion-header>
 
 
 <ion-content class="fondo">
-
+  <ion-refresher (ionRefresh)="actualizandoTransacciones($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <ion-list>
+    <ion-item-sliding *ngFor="let i of arreglo">
+      <ion-item (click)="entrarDetalle(i)">
+        <ion-avatar item-start>
+          <img src="../../assets/imgs/cono.png">
+        </ion-avatar>
+        <h2>Cuenta: {{i.nombre}}</h2>
+        <p>Número de folio: {{i.id}}</p>
+      </ion-item>
+      <ion-item-options side="right">
+        <button color="botones" (click)="cobrar(i.id);" ion-button>
+          <ion-icon name="checkmark-circle"></ion-icon>Cobrar</button>
+        <button color="rojo" (click)="cancelar(i.id)" ion-button>
+          <ion-icon name="trash"></ion-icon>Cancelar
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>
 
 <ion-footer>
   <ion-toolbar>
-    <button color="botones" ion-button class="submit-btn"  full  type="button" (click)="nuevo();">nuevo</button>
+    <button color="botones" ion-button class="submit-btn" full type="button" (click)="nuevo();">nuevo</button>
   </ion-toolbar>
 </ion-footer>

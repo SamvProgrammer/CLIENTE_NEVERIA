@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import {  NavController, NavParams } from 'ionic-angular';
-
+import { NavController, NavParams } from 'ionic-angular';
+import { TicketsProvider } from '../../providers/tickets/tickets';
+import { TicketPage } from '../ticket/ticket';
 /**
  * Generated class for the TransaccionesPage page.
  *
@@ -15,11 +16,36 @@ import {  NavController, NavParams } from 'ionic-angular';
 })
 export class TransaccionesPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public arreglo: any = [];
+  constructor(public navCtrl: NavController, public navParams: NavParams, private tickets: TicketsProvider) {
+    this.obtenerlista();
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad TransaccionesPage');
+  ionViewDidEnter() {
+    this.obtenerlista();
   }
 
+  public obtenerlista(): any {
+    this.tickets.gets(true).subscribe(datos => {
+      this.arreglo = datos;
+      console.log(this.arreglo);
+    });
+  }
+
+  public actualizandoTransacciones(refresher): any {
+
+    this.tickets.gets(true).subscribe(datos => {
+      this.arreglo = datos;
+      refresher.complete();
+    });
+  }
+
+
+
+  public reimprimir(obj): any {
+    console.log(obj);
+    this.navCtrl.push(TicketPage, { id_ticket: obj.id });
+  }
 }
+
+
